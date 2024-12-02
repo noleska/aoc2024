@@ -29,7 +29,6 @@ class report:
             for i in range(len(self.levels)):
                 temp_levels = self.levels.copy()
                 temp_levels.pop(i)
-                print(self.levels, temp_levels)
                 if report(temp_levels, dampen=False).inherent_safe:
                     self.dampened_safe = True
                     break
