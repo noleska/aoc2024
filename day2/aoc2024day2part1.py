@@ -23,9 +23,7 @@ class report:
 
 if __name__ == '__main__':
     input_loc = r'./input.txt'
-    
     reports = []
-    
     with open(input_loc, newline='') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ')
         for row in spamreader:
