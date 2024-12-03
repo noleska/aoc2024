@@ -13,7 +13,6 @@ instructions = []
 with open(r'./input.txt', 'r', newline="") as f:
   in_str = str(f.readlines())
 
-# get the rest of the mults, setting control flag to false for those following a "don't"
 for mult_inst in re.finditer(mult_pattern, in_str):
   prev_substr = in_str[:mult_inst.start()]
   last_do = prev_substr.rfind(r"do()")
