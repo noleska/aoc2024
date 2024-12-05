@@ -2,20 +2,21 @@ import pandas as pd
 
 df = pd.read_fwf(r'./input.txt', widths=[1 for x in range(0,140)], header = None)
 search_key = "XMAS"
+rlsk   = range(len(search_key)
 margin = len(search_key) - 1
 nbound = 0
 ebound = len(df.columns)
 sbound = len(df)
 wbound = 0
 
-pts_for_dir = {'n' : [{'x' : -i, 'y' :  0} for i in range(len(search_key))],
-               'ne': [{'x' : -i, 'y' :  i} for i in range(len(search_key))],
-               'e' : [{'x' : 0 , 'y' :  i} for i in range(len(search_key))],
-               'se': [{'x' : i , 'y' :  i} for i in range(len(search_key))],
-               's' : [{'x' : i , 'y' :  0} for i in range(len(search_key))],
-               'sw': [{'x' : i , 'y' : -i} for i in range(len(search_key))],
-               'w' : [{'x' : 0 , 'y' : -i} for i in range(len(search_key))],
-               'nw': [{'x' : -i, 'y' : -i} for i in range(len(search_key))]}
+pts_for_dir = {'n' : [{'x' : -i, 'y' :  0} for i in rlsk],
+               'ne': [{'x' : -i, 'y' :  i} for i in rlsk],
+               'e' : [{'x' :  0, 'y' :  i} for i in rlsk],
+               'se': [{'x' :  i, 'y' :  i} for i in rlsk],
+               's' : [{'x' :  i, 'y' :  0} for i in rlsk],
+               'sw': [{'x' :  i, 'y' : -i} for i in rlsk],
+               'w' : [{'x' :  0, 'y' : -i} for i in rlsk],
+               'nw': [{'x' : -i, 'y' : -i} for i in rlsk]}
 
 
 class search_point:
@@ -23,8 +24,8 @@ class search_point:
     self.xorigin = x
     self.yorigin = y
     self.clear = {'n' : self.xorigin >= nbound + margin,
-                  'e' : self.yorigin < ebound - margin,
-                  's' : self.xorigin < sbound - margin,
+                  'e' : self.yorigin <  ebound - margin,
+                  's' : self.xorigin <  sbound - margin,
                   'w' : self.yorigin >= wbound + margin,}
     self.clear.update({'ne' : self.clear['n'] and self.clear['e'],
                        'se' : self.clear['s'] and self.clear['e'], 
